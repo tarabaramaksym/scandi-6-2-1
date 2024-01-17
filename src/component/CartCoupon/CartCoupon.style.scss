@@ -1,0 +1,105 @@
+/**
+ * ScandiPWA - Progressive Web App for Magento
+ *
+ * Copyright © Scandiweb, Inc. All rights reserved.
+ * See LICENSE for license details.
+ *
+ * @license OSL-3.0 (Open Software License ("OSL") v. 3.0)
+ * @package scandipwa/scandipwa
+ * @link https://github.com/scandipwa/scandipwa
+ */
+
+.CartCoupon {
+    @include mobile {
+        width: 100%;
+        padding: 5px 0;
+    }
+
+    @include tablet-portrait {
+        width: 100%;
+    }
+
+    &-Message {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    &-MessageText {
+        margin: 0;
+        word-break: break-word;
+        margin-inline-end: 24px;
+        display: inline-block;
+    }
+
+    .Field {
+        margin-block-start: 0;
+    }
+
+    .Form {
+        margin-block-start: 12px;
+        display: inline-flex;
+
+        @include mobile {
+            width: 100%;
+            display: inline-block;
+        }
+    }
+
+    input, button {
+        vertical-align: top;
+    }
+
+    &-Input {
+        display: inline-block;
+        margin-inline-end: 24px;
+
+        input {
+            width: 296px;
+
+            @include mobile {
+                width: 100%;
+            }
+
+            @include tablet {
+                width: 230px;
+            }
+
+            @include tablet-portrait {
+                width: 100%;
+            }
+        }
+
+        @include mobile {
+            width: 100%;
+            margin-block-start: 0;
+        }
+
+        @include tablet-portrait {
+            width: 100%;
+            margin-block-start: 0;
+        }
+    }
+
+    &-Button {
+        @include button;
+
+        @include mobile {
+            width: 100%;
+            margin-inline-start: 0;
+            margin-block: 14px 12px;
+        }
+
+        @include tablet-portrait {
+            margin-inline-start: 0;
+        }
+    }
+
+    &-Title {
+        font-size: 14px;
+        font-weight: normal;
+        text-transform: uppercase;
+        margin: 0;
+        margin-block-end: 20px;
+    }
+}

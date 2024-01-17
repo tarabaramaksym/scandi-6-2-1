@@ -1,0 +1,38 @@
+.ContactPage {
+    &-Heading {
+        height: 36px;
+        margin-block-start: 24px;
+        margin-block-end: 18px;
+        font-size: 24px;
+    }
+
+    &-ColumnWrapper {
+        display: flex;
+        margin-block-end: 24px;
+
+        @include mobile {
+            display: block;
+            padding: 12px 0;
+        }
+    }
+
+    &-Column {
+        flex: 1;
+
+        &_isContent {
+            margin-inline-end: 18px;
+
+            @include mobile {
+                margin-inline-end: 0;
+            }
+        }
+    }
+
+    .Form {
+        .Button {
+            @include mobile {
+                width: 100%;
+            }
+        }
+    }
+}

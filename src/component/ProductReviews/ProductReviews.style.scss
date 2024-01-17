@@ -1,0 +1,97 @@
+/**
+ * ScandiPWA - Progressive Web App for Magento
+ *
+ * Copyright © Scandiweb, Inc. All rights reserved.
+ * See LICENSE for license details.
+ *
+ * @license OSL-3.0 (Open Software License ("OSL") v. 3.0)
+ * @package scandipwa/scandipwa
+ * @link https://github.com/scandipwa/scandipwa
+ */
+
+.ProductReviews {
+    @include desktop {
+        z-index: 1;
+    }
+
+    &-Wrapper {
+        padding: 0;
+
+        @include desktop {
+            padding: 36px 12px;
+        }
+    }
+
+    &-Summary {
+        align-self: stretch;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    &-SummaryRating {
+        --star-size: 27px;
+
+        .ProductReviewRating-Counter {
+            display: none;
+        }
+    }
+
+    &-ExpandableContentHeading,
+    &-ExpandableContentButton {
+        @include desktop {
+            display: none;
+        }
+    }
+
+    &-ExpandableContentContent {
+        @include desktop {
+            margin-block-start: 0;
+        }
+
+        &_isContentExpanded {
+            padding-block-start: 0;
+        }
+
+        .ProductReviewRating {
+            align-items: center;
+            margin-block-start: -5px;
+        }
+    }
+
+    & &-Button {
+        position: absolute;
+        inset-inline-end: 0;
+        inset-block-start: 0;
+        inset-block-end: 0;
+        margin: auto;
+
+        @include mobile {
+            position: relative;
+            width: 100%;
+            margin-block-start: 18px;
+            line-height: 20px;
+        }
+    }
+
+    &-SummaryDetails {
+        display: inline-block;
+        margin-inline-start: 12px;
+        margin-block: auto;
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 28px;
+        font-style: normal;
+
+        @include mobile {
+            margin-inline-start: 14px;
+            line-height: 24px;
+            font-size: 18px;
+        }
+
+        span {
+            &::before {
+                content: ' / ';
+            }
+        }
+    }
+}

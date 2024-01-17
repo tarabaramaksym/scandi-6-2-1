@@ -1,0 +1,75 @@
+/**
+ * ScandiPWA - Progressive Web App for Magento
+ *
+ * Copyright © Scandiweb, Inc. All rights reserved.
+ * See LICENSE for license details.
+ *
+ * @license OSL-3.0 (Open Software License ("OSL") v. 3.0)
+ * @package scandipwa/scandipwa
+ * @link https://github.com/scandipwa/scandipwa
+ */
+
+.CheckoutAddressBook {
+    margin: 24px 0;
+    width: 100%;
+
+    @include mobile {
+        margin: 28px 0;
+    }
+
+    &-Wrapper {
+        @include wide-desktop {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-column-gap: 40px;
+        }
+    }
+
+    &-CustomAddressWrapper {
+        margin: 14px 0;
+    }
+
+    & &-Button {
+        @include mobile {
+            width: 100%;
+        }
+
+        &_isCustomAddressExpanded {
+            display: none;
+        }
+    }
+
+    .FieldGroup {
+        &-Wrapper {
+            grid-column-start: 1;
+            grid-column-end: 3;
+
+            &_multipleFields.FieldGroup-Wrapper_oddAddresses {
+                @include wide-desktop {
+                    .FieldGroup {
+                        > *:first-child {
+                            grid-column-start: 1;
+                            grid-column-end: 3;
+                        }
+
+                        > *:last-child:nth-child(odd) {
+                            grid-column: span 1;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .FieldForm-Fields, .FieldGroup {
+        @include wide-desktop {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-column-gap: 32px;
+
+            > *:last-child:nth-child(odd) {
+                grid-column: span 2;
+            }
+        }
+    }
+}

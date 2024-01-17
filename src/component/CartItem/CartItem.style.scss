@@ -1,0 +1,330 @@
+/**
+ * ScandiPWA - Progressive Web App for Magento
+ *
+ * Copyright © Scandiweb, Inc. All rights reserved.
+ * See LICENSE for license details.
+ *
+ * @license OSL-3.0 (Open Software License ("OSL") v. 3.0)
+ * @package scandipwa/scandipwa
+ * @link https://github.com/scandipwa/scandipwa
+ */
+
+:root {
+    --cart-item-subheading-color: #888;
+}
+
+.CartItem {
+    --header-color: var(--color-black);
+
+    border-block-end: 1px solid var(--primary-divider-color);
+
+    &-OutOfStock {
+        font-weight: bold;
+        margin-block-end: 5px;
+    }
+
+    &-Link {
+        color: inherit;
+        font-weight: 400;
+        align-self: start;
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
+
+    &_isCartOverlay:last-of-type {
+        border-block-end: none;
+    }
+
+    &-Content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-width: 0;
+    }
+
+    &-Wrapper {
+        display: grid;
+        grid-gap: 12px;
+        padding: 12px;
+        background: var(--color-white);
+        align-items: center;
+        grid-template-columns: minmax(100px, 3fr) 2fr 1fr;
+
+        &_isMobileLayout {
+            grid-template-columns: 64px auto;
+            grid-gap: 14px;
+            padding: 14px 0;
+            min-height: 130px;
+        }
+
+        &_isSummary {
+            grid-template-columns: 96px auto;
+
+            & .CartItem-ProductInfo {
+                justify-content: space-between;
+            }
+        }
+
+        &_isCart {
+            & .CartItem-Title {
+                @include desktop {
+                    padding-inline-start: 20px;
+                }
+            }
+        }
+
+        &_isProductOutOfStock {
+            .CartItem-ProductActions_isMobileLayout {
+                align-self: flex-end;
+            }
+        }
+    }
+
+    &-ProductInfo {
+        display: flex;
+
+        &_isMobileLayout {
+            align-items: flex-start;
+            justify-content: space-between;
+        }
+    }
+
+    &-Options {
+        color: var(--secondary-dark-color);
+        font-size: 12px;
+    }
+
+    &-Option {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        line-height: 16px;
+        display: flex;
+        gap: 4px;
+
+        &_isBundle {
+            flex-direction: column;
+            gap: 0;
+        }
+
+        span,
+        div {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    }
+
+    &-ItemLinks {
+        &Wrapper {
+            display: flex;
+            flex-direction: column;
+            color: var(--secondary-dark-color);
+            font-size: 12px;
+        }
+    }
+
+    &-Title {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 65%;
+        overflow: hidden;
+
+        &_isMobileLayout {
+            width: 90%;
+        }
+
+        @include mobile {
+            margin-block-end: 12px;
+        }
+    }
+
+    &-Heading,
+    &-SubHeading {
+        font-size: 14px;
+        line-height: 1.2;
+        width: 100%;
+        margin-block-end: 6px;
+
+        @include mobile {
+            max-width: 95%;
+            margin-block-end: 2px;
+            margin-block-start: 2px;
+        }
+    }
+
+    &-Heading {
+        color: var(--color-black);
+        overflow: hidden;
+        line-height: 20px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    &-SubHeading {
+        color: var(--cart-item-subheading-color);
+    }
+
+    &-Picture {
+        width: 96px;
+        height: 96px;
+        align-self: flex-start;
+
+        img {
+            object-position: top;
+        }
+
+        &_isMobileLayout {
+            width: 64px;
+            height: 64px;
+        }
+    }
+
+    &-Price {
+        text-align: end;
+        font-size: 18px;
+
+        &_isMobileLayout {
+            text-align: start;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: flex-end;
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        &_isCartOverlay data {
+            font-size: 14px;
+            line-height: 20px;
+        }
+    }
+
+    &-ProductActions {
+        display: flex;
+        align-items: center;
+
+        &_isMobileLayout {
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+    }
+
+    &-CartItemRows {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-width: 0;
+    }
+
+    &-Delete {
+        align-items: center;
+        display: flex;
+        z-index: 5;
+        font-size: 14px;
+        margin-inline-start: 8px;
+
+        &:hover {
+            color: var(--primary-base-color);
+
+            .CloseIcon {
+                fill: var(--primary-base-color);
+            }
+        }
+
+        &_isMobileLayout {
+            height: 12px;
+            padding-inline-start: 0;
+        }
+    }
+
+    &-DeleteButtonText {
+        color: inherit;
+        margin-inline-start: 4px;
+        cursor: pointer;
+        font-family: sans-serif;
+        line-height: 1;
+
+        &_isMobileLayout {
+            display: none;
+        }
+
+        @include tablet {
+            display: none;
+        }
+
+        @include narrow-desktop {
+            display: none;
+        }
+    }
+
+    & &-Qty { // hack to obtain required specificity
+        margin-block-start: 0;
+        display: flex;
+        cursor: default;
+
+        @include mobile {
+            align-items: center;
+            font-size: 14px;
+        }
+
+        input {
+            @include mobile {
+                width: 32px;
+                min-width: 32px;
+                background-color: transparent;
+            }
+        }
+
+        button {
+            &:not([disabled]) {
+                cursor: pointer;
+            }
+        }
+    }
+
+    &-SwipeToDeleteRightSide {
+        height: 100%;
+        width: 100%;
+        font-weight: 600;
+        color: var(--color-white);
+        background-color: var(--swipe-to-delete-bg-color);
+    }
+
+    .ProductPrice {
+        @include desktop {
+            min-height: auto;
+        }
+
+        &-SubPrice {
+            font-size: 12px;
+            font-weight: 400;
+        }
+    }
+
+    .CartItem-QuantityWrapper {
+        &_isCartOverlay {
+            & button {
+                width: 36px;
+                height: 36px;
+            }
+
+            .CartItem-Qty {
+                font-size: 14px;
+
+                input {
+                    width: 32px;
+                    min-width: 32px;
+                }
+            }
+        }
+
+        &_isPlaceholder {
+            width: 144px;
+        }
+    }
+}

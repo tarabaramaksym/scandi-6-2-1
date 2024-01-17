@@ -1,0 +1,64 @@
+/**
+ * ScandiPWA - Progressive Web App for Magento
+ *
+ * Copyright © Scandiweb, Inc. All rights reserved.
+ * See LICENSE for license details.
+ *
+ * @license OSL-3.0 (Open Software License ("OSL") v. 3.0)
+ * @package scandipwa/scandipwa
+ * @link https://github.com/scandipwa/scandipwa
+ */
+
+:root {
+    --default-button-padding: 20px;
+    --default-button-radius: 2px;
+    --default-button-height: 48px;
+    --default-text-decoration: none;
+    --button-border-width: 2px;
+    // Primary button
+    --button-background: var(--imported_buttons_background_color, var(--primary-base-color));
+    --button-border: var(--imported_buttons_border_color, var(--primary-base-color));
+    --button-border-radius: var(--imported_buttons_border_radius, var(--default-button-radius));
+    --button-color: var(--imported_buttons_color, #{$white});
+    --button-height: var(--imported_buttons_height, var(--default-button-height));
+    --button-padding: var(--imported_buttons_padding, var(--default-button-padding));
+    --button-text-decoration: var(--imported_buttons_text_decoration, var(--default-text-decoration));
+    // Primary button (Hover)
+    --button-hover-background: var(--imported_hoverButtons_background_color, var(--primary-dark-color));
+    --button-hover-border: var(--imported_hoverButtons_border_color, var(--primary-dark-color));
+    --button-hover-border-radius: var(--imported_hoverButtons_border_radius, var(--default-button-radius));
+    --button-hover-color: var(--imported_hoverButtons_color, #{$white});
+    --button-hover-height: var(--imported_hoverButtons_height, var(--default-button-height));
+    --button-hover-padding: var(--imported_hoverButtons_padding, var(--default-button-padding));
+    --button-hover-decoration: var(--imported_hoverButtons_text_decoration, var(--default-text-decoration));
+    // Secondary button (Hollow)
+    --hollow-button-background: var(--imported_hollowButtons_background_color, tranparent);
+    --hollow-button-border: var(--imported_hollowButtons_border_color, var(--primary-base-color));
+    --hollow-button-border-radius: var(--imported_hollowButtons_border_radius, var(--default-button-radius));
+    --hollow-button-color: var(--imported_hollowButtons_color, var(--primary-base-color));
+    --hollow-button-height: var(--imported_hollowButtons_height, var(--default-button-height));
+    --hollow-button-padding: var(--imported_hollowButtons_padding, var(--default-button-padding));
+    --hollow-button-text-decoration: var(--imported_hollowButtons_text_decoration, var(--default-text-decoration));
+    // Secondary button (Hover)
+    --hollow-button-hover-background: var(--imported_hollowHoverButtons_background_color, tranparent);
+    --hollow-button-hover-border: var(--imported_hollowHoverButtons_border_color, var(--primary-dark-color));
+    --hollow-button-hover-border-radius: var(--imported_hollowHoverButtons_border_radius, var(--default-button-radius));
+    --hollow-button-hover-color: var(--imported_hollowHoverButtons_color, var(--primary-dark-color));
+    --hollow-button-hover-height: var(--imported_hollowHoverButtons_height, var(--default-button-height));
+    --hollow-button-hover-padding: var(--imported_hollowHoverButtons_padding, var(--default-button-padding));
+    --hollow-button-hover-text-decoration: var(--imported_hollowHoverButtons_text_decoration, var(--default-text-decoration));
+}
+
+.Button {
+    @include button;
+}
+
+button {
+    background-color: transparent;
+
+    // override default blue color for lists in Safari since iOS15
+
+    & * {
+        color: var(--color-black);
+    }
+}

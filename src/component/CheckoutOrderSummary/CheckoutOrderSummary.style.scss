@@ -1,0 +1,268 @@
+/**
+ * ScandiPWA - Progressive Web App for Magento
+ *
+ * Copyright © Scandiweb, Inc. All rights reserved.
+ * See LICENSE for license details.
+ *
+ * @license OSL-3.0 (Open Software License ("OSL") v. 3.0)
+ * @package scandipwa/scandipwa
+ * @link https://github.com/scandipwa/scandipwa
+ */
+
+:root {
+    --footer-totals-height: 0;
+    --loader-scale: 1;
+}
+
+.CheckoutOrderSummary {
+    $divider-border: 1px solid var(--input-border-color);
+
+    @include desktop {
+        border: 1px solid var(--secondary-base-color);
+        border-radius: 2px;
+        padding-block: 24px 0;
+        padding-inline: 16px;
+        margin-block-end: 15px;
+    }
+
+    &-Header {
+        font-size: 24px;
+        font-weight: 700;
+
+        @include mobile {
+            display: none;
+        }
+
+        h2 {
+            margin-block: 0;
+        }
+    }
+
+    &-ItemsInCart {
+        font-size: 14px;
+        text-transform: none;
+        inset-block-start: 2px;
+        font-weight: 400;
+        margin-block: 20px 16px;
+    }
+
+    &-SummaryItem {
+        justify-content: space-between;
+        display: flex;
+        padding: 12px 0;
+        margin-block-end: 0;
+        padding-inline-start: 0;
+
+        @include mobile {
+            padding: 14px 0;
+        }
+
+        &:last-child {
+            margin-block-end: 0;
+        }
+
+        &::before {
+            content: none;
+        }
+
+        &_withAppendedContent {
+            flex-wrap: wrap;
+        }
+
+        &_isTotal {
+            font-size: 16px;
+            line-height: 24px;
+            padding-inline-start: 0;
+
+            @include desktop {
+                border-block-start: 1px solid var(--primary-divider-color);
+            }
+
+            & p {
+                font-size: 16px;
+                font-weight: 700;
+                line-height: 24px;
+            }
+
+            & div {
+                line-height: 24px;
+            }
+        }
+    }
+
+    &-OrderItems {
+        @include mobile {
+            background-color: var(--secondary-base-color);
+        }
+
+        h3 {
+            text-align: start;
+        }
+    }
+
+    &-CartItemList {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    &-CartItemDescription {
+        margin-block-start: 5px;
+
+        p {
+            font-size: 13px;
+            line-height: 1.5;
+
+            @include mobile {
+                font-size: 15px;
+            }
+        }
+    }
+
+    &-CartItem {
+        display: grid;
+        grid-template-columns: 96px auto auto;
+        grid-column-gap: 6px;
+        margin: 0 0 6px;
+        padding: 0;
+
+        @include mobile {
+            grid-template-columns: 112px auto auto;
+            grid-column-gap: 7px;
+            margin: 0 0 7px;
+        }
+
+        &::before {
+            content: none;
+        }
+
+        > * {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+    }
+
+    &-Thumbnail {
+        width: 96px;
+        height: 96px;
+
+        @include mobile {
+            width: 112px;
+            height: 112px;
+        }
+    }
+
+    &-Title {
+        p {
+            margin: 0;
+            padding: 0;
+            text-align: start;
+        }
+    }
+
+    &-Details {
+        justify-self: end;
+    }
+
+    &-ExpandableContent {
+        border-block-start: none;
+
+        &Button {
+            padding-inline: 0;
+        }
+    }
+
+    &-ExpandableContentHeading {
+        font-size: 18px;
+    }
+
+    .ExpandableContent-ToggleButton {
+        height: 20px;
+        width: 20px;
+        inset-inline-start: 3px;
+    }
+
+    &-Coupon {
+        @include mobile {
+            padding: 10px 14px;
+            border-block-end: $divider-border;
+            margin: 0 -14px;
+            width: auto;
+        }
+    }
+
+    &-CmsBlock {
+        padding: 10px 0;
+    }
+
+    .ProductPrice {
+        margin-block-start: 0;
+        font-weight: bold;
+        line-height: 1;
+        font-size: 18px;
+
+        &-SubPrice {
+            display: block;
+            font-size: 12px;
+        }
+    }
+
+    .CartItem-Wrapper {
+        padding: 12px 0;
+
+        @include mobile {
+            padding: 14px 0;
+        }
+    }
+
+    &-Text {
+        flex-direction: column;
+        word-break: break-word;
+        margin-block-end: 0;
+
+        span {
+            display: block;
+            font-size: 12px;
+            font-weight: 400;
+        }
+    }
+
+    &-Price {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        text-align: end;
+        white-space: nowrap;
+
+        span {
+            line-height: 16px;
+            font-size: 12px;
+        }
+    }
+
+    &-AppendedContent {
+        flex-basis: 100%;
+        font-size: 12px;
+    }
+
+    &-ButtonWrapper {
+        @include mobile-bottom-wrapper {
+            padding: 16px;
+            inset-block-end: 16px;
+        }
+
+        &_isEmpty {
+            display: none;
+        }
+    }
+
+    .Loader {
+        &-Scale {
+            @media screen {
+                inset-block-start: calc(35% - (3px * var(--loader-scale)));
+            }
+        }
+    }
+}

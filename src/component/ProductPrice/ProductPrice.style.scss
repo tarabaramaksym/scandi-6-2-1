@@ -1,0 +1,116 @@
+/**
+ * ScandiPWA - Progressive Web App for Magento
+ *
+ * Copyright © Scandiweb, Inc. All rights reserved.
+ * See LICENSE for license details.
+ *
+ * @license OSL-3.0 (Open Software License ("OSL") v. 3.0)
+ * @package scandipwa/scandipwa
+ * @link https://github.com/scandipwa/scandipwa
+ */
+
+:root {
+    --price-color: #{$black};
+    --price-with-discount-color: #b10d0d;
+    --price-discount-color: #0A0903;
+}
+
+.ProductPrice {
+    color: var(--price-color);
+    font-weight: 700;
+    font-size: 18px;
+    font-style: normal;
+    line-height: 24px;
+    margin-block-end: 0;
+    margin-block-start: 0;
+    vertical-align: middle;
+
+    @include desktop {
+        min-height: 40px;
+    }
+
+    @include mobile {
+        font-size: 18px;
+    }
+
+    &-Price {
+        text-decoration: none;
+        display: inline-flex;
+        align-items: baseline;
+        flex-wrap: wrap;
+    }
+
+    del {
+        font-size: 14px;
+        font-weight: 500;
+        opacity: .48;
+        display: inline-block;
+        margin-inline-end: 12px;
+
+        @include mobile {
+            margin-block-start: 6px;
+        }
+    }
+
+    &-HighPrice {
+        color: var(--price-color);
+        line-height: 18px;
+
+        @include desktop {
+            line-height: 14px;
+        }
+    }
+
+    &-PriceValue {
+        margin-block-start: 6px;
+        line-height: 24px;
+
+        @include desktop {
+            line-height: 28px;
+        }
+
+        @include mobile {
+            margin-block-start: 4px;
+        }
+    }
+
+    &, &-BundleFrom, &-BundleTo {
+        &_hasDiscount {
+            .ProductPrice {
+                &-PriceBadge {
+                    margin-block-start: 5px;
+                    margin-block-end: -5px;
+                }
+            }
+        }
+    }
+
+    &-Placeholder {
+        &::after {
+            content: 'aaaaa';
+        }
+    }
+
+    &-SubPrice {
+        display: block;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 16px;
+        margin-block-start: 4px;
+
+        @include desktop {
+            line-height: 16px;
+        }
+    }
+
+    &-PriceBadge {
+        font-size: 14px;
+        font-weight: 400;
+        margin-inline-end: 4px;
+        white-space: nowrap;
+
+        @include desktop {
+            line-height: 20px;
+        }
+    }
+}

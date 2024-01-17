@@ -1,0 +1,85 @@
+/**
+ * ScandiPWA - Progressive Web App for Magento
+ *
+ * Copyright © Scandiweb, Inc. All rights reserved.
+ * See LICENSE for license details.
+ *
+ * @license OSL-3.0 (Open Software License ("OSL") v. 3.0)
+ * @package scandipwa/scandipwa
+ * @link https://github.com/scandipwa/scandipwa
+ */
+
+.CurrencySwitcher {
+    --selector-width: 56px;
+
+    border-block-end: 1px solid var(--primary-divider-color);
+
+    @include mobile {
+        margin: 0 16px;
+        padding-block-end: 1px;
+    }
+
+    .Field {
+        margin-block-start: 0;
+
+        &Select {
+            @include desktop {
+                width: var(--selector-width);
+                padding-inline-start: 12px;
+            }
+
+            .ChevronIcon {
+                inset-inline-end: 0;
+            }
+
+            &-Select {
+                border: none;
+                font-size: 14px;
+                font-weight: 400;
+                margin: 0;
+                opacity: 1;
+                padding-inline-start: 0;
+                line-height: 20px;
+                min-height: 0;
+            }
+
+            &::after {
+                height: 13px;
+                inset-inline-end: 0;
+                width: 13px;
+            }
+        }
+    }
+
+    @include desktop {
+        border-block-end: none;
+
+        .FieldSelect {
+            &-Select {
+                border: none;
+                font-size: 12px;
+                padding: 0;
+            }
+
+            &-Options {
+                min-width: var(--selector-width);
+                width: min-content;
+
+                &_isExpanded {
+                    border-block-start: 1px solid var(--primary-divider-color);
+                }
+
+                &Wrapper {
+                    min-width: var(--selector-width);
+                    width: min-content;
+                }
+            }
+
+            &-Option {
+                line-height: 28px;
+                padding: 6px 12px;
+                font-size: 12px;
+            }
+        }
+    }
+}

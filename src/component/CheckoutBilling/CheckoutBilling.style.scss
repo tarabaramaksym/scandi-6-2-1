@@ -1,0 +1,92 @@
+/**
+ * ScandiPWA - Progressive Web App for Magento
+ *
+ * Copyright © Scandiweb, Inc. All rights reserved.
+ * See LICENSE for license details.
+ *
+ * @license OSL-3.0 (Open Software License ("OSL") v. 3.0)
+ * @package scandipwa/scandipwa
+ * @link https://github.com/scandipwa/scandipwa
+ */
+
+:root {
+    --checkbox-border-color: var(--imported_checkboxes_border_color, var(--primary-base-color));
+}
+
+.CheckoutBilling {
+    margin-block-start: 24px;
+
+    &-Button {
+        width: 294px;
+    }
+
+    &-Checkbox {
+        display: inline-block;
+        font-size: 14px;
+        margin-block-start: 10px;
+    }
+
+    &-TermsAndConditions {
+        font-size: 14px;
+        margin: 0;
+        margin-block-end: 24px;
+        display: flex;
+        align-items: center;
+
+        @include mobile {
+            font-size: 15px;
+            margin-block-end: 28px;
+        }
+
+        &-Checkbox {
+            margin-block: 0;
+
+            @include mobile {
+                margin-inline-end: 2px;
+            }
+        }
+    }
+
+    &-TACLabel {
+        display: flex;
+        align-items: center;
+
+        &:hover {
+            cursor: pointer;
+
+            @include desktop {
+                color: var(--primary-base-color);
+            }
+        }
+    }
+
+    &-TACLink {
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--link-color);
+        display: inline;
+        cursor: pointer;
+
+        &:hover {
+            text-decoration: underline;
+        }
+
+        &:focus {
+            text-decoration: underline;
+        }
+    }
+
+    .Checkout {
+        &-OrderTotal {
+            dd {
+                text-align: end;
+
+                span {
+                    display: block;
+                    font-size: 0.6em;
+                    font-weight: 300;
+                }
+            }
+        }
+    }
+}

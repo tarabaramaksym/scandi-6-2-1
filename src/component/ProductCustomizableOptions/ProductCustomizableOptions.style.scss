@@ -1,0 +1,178 @@
+/**
+ * ScandiPWA - Progressive Web App for Magento
+ *
+ * Copyright © Scandiweb, Inc. All rights reserved.
+ * See LICENSE for license details.
+ *
+ * @license OSL-3.0 (Open Software License ("OSL") v. 3.0)
+ * @package scandipwa/scandipwa
+ * @link https://github.com/scandipwa/scandipwa
+ */
+
+:root {
+    --customizable-options-additional-information-color: #2c2c2c;
+    --customizable-options-required-text-color: #dc6d6d;
+}
+
+.ProductCustomizableItem {
+    &-Label {
+        & &:not([class*="-Heading"] > [class*="-Label"]) {
+            width: calc(100% - max(21px, var(--checkbox-width)));
+            word-break: break-word;
+            min-width: 50px;
+        }
+    }
+
+    &-PriceLabel {
+        white-space: nowrap;
+    }
+
+    &-Wrapper {
+        margin-block-start: 26px;
+
+        @include mobile {
+            margin-block-end: 15px;
+        }
+
+        .Field {
+            margin-block-start: 16px;
+
+            &_type {
+                &_textarea, &_text {
+                    line-height: 0;
+
+                    & + .Field-SubLabelContainer {
+                        margin-block-start: 6px;
+
+                        .Field-SubLabel {
+                            font-weight: normal;
+                        }
+                    }
+
+                    & + .Field-ErrorMessages {
+                        margin-block-end: 0;
+                    }
+
+                    & + .Field-ErrorMessages + .Field-SubLabelContainer {
+                        margin-block-start: 0;
+
+                        .Field-SubLabel {
+                            font-weight: normal;
+                        }
+                    }
+                }
+
+                &_textarea {
+                    textarea {
+                        width: 100%;
+                    }
+                }
+
+                &_text {
+                    input {
+                        width: 100%;
+                    }
+                }
+
+                &_date, &_datetime-local, &_time {
+                    input {
+                        max-width: 100%;
+                        min-width: 250px;
+                        height: 45px;
+                    }
+                }
+            }
+        }
+    }
+
+    &-Content {
+        margin-block-start: 17px;
+
+        .Field {
+            margin-block-start: 12px;
+
+            input,
+            textarea {
+                width: 100%;
+            }
+        }
+    }
+
+    &-Required {
+        color: var(--customizable-options-required-text-color);
+        margin-inline-start: 4px;
+
+        @include mobile {
+            margin-block-start: 7px;
+        }
+    }
+
+    &-Information {
+        color: var(--customizable-options-additional-information-color);
+        font-size: 12px;
+        margin-block-start: 6px;
+
+        @include mobile {
+            margin-block-start: 7px;
+        }
+    }
+
+    &-ExpandableContentContent {
+        &_isContentExpanded {
+            @include mobile {
+                padding-block-start: 0;
+                padding-block-end: 14px;
+                padding-inline: 14px;
+            }
+
+            .Field {
+                &:first-child {
+                    margin-block-start: 0;
+                }
+            }
+        }
+    }
+
+    &-ExpandableContentHeading {
+        @include desktop {
+            font-weight: normal;
+        }
+
+        .ExpandableContent-HeadingAdditional {
+            font-weight: bold;
+        }
+    }
+
+    &-Heading {
+        font-size: 14px;
+        width: auto;
+        display: inline-flex;
+
+        &Bold {
+            font-size: 14px;
+            font-weight: bold;
+
+            .ProductCustomizableItem {
+                &-Label {
+                    display: inline-block;
+                }
+            }
+        }
+
+        &Price {
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        &>div {
+            width: auto;
+        }
+    }
+
+    &_isPlaceholder {
+        animation: var(--placeholder-animation);
+        background-image: var(--placeholder-image);
+        background-size: var(--placeholder-size);
+        max-width: 270px;
+    }
+}

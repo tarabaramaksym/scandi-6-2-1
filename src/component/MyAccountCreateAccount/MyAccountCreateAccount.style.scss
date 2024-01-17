@@ -1,0 +1,40 @@
+/**
+ * ScandiPWA - Progressive Web App for Magento
+ *
+ * Copyright © Scandiweb, Inc. All rights reserved.
+ * See LICENSE for license details.
+ *
+ * @license OSL-3.0 (Open Software License ("OSL") v. 3.0)
+ * @package scandipwa/scandipwa
+ * @link https://github.com/scandipwa/scandipwa
+ */
+
+.MyAccountOverlay {
+    &-PersonalInfoLegend {
+        padding-block: 8px;
+    }
+
+    &-SignUpLegend {
+        padding-block: 28px 8px;
+    }
+
+    &-SignUpButton {
+        margin-block-start: 24px;
+
+        @include mobile {
+            margin-block-end: 18px;
+        }
+    }
+
+    &-SignInButton {
+        height: fit-content;
+    }
+
+    &-PasswordBlock {
+        @include wide-desktop {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-column-gap: 16px;
+        }
+    }
+}

@@ -1,0 +1,91 @@
+/**
+ * ScandiPWA - Progressive Web App for Magento
+ *
+ * Copyright © Scandiweb, Inc. All rights reserved.
+ * See LICENSE for license details.
+ *
+ * @license OSL-3.0 (Open Software License ("OSL") v. 3.0)
+ * @package scandipwa/scandipwa
+ * @link https://github.com/scandipwa/scandipwa
+ */
+
+.ProductPage {
+    @include tablet {
+        padding-block-start: 0;
+        margin-block-start: 0;
+    }
+
+    @include mobile {
+        padding-block-end: 133px;
+        margin-inline: 16px;
+    }
+
+    &-Wrapper {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-column-gap: 24px;
+        grid-template-rows: min-content min-content;
+        padding-block-start: 24px;
+
+        @include desktop {
+            grid-column-gap: 48px;
+            grid-template-areas: '. actions';
+            padding-block-end: 72px;
+
+            .ProductActions {
+                grid-area: actions;
+            }
+        }
+
+        @include mobile {
+            grid-template-columns: 100%;
+            padding: 0;
+        }
+
+        > .RelatedProducts {
+            display: none;
+
+            @include desktop {
+                display: block;
+            }
+        }
+    }
+
+    &-Brand {
+        font-weight: bold;
+        opacity: .48;
+        font-size: 12px;
+        line-height: 16px;
+    }
+
+    &-Title {
+        margin-block: 8px;
+        text-transform: none;
+
+        @include mobile {
+            font-weight: 400;
+            font-size: 14px;
+        }
+    }
+
+    &-SectionPlaceholder {
+        background-image: var(--placeholder-image);
+        background-size: var(--placeholder-size);
+        animation: var(--placeholder-animation);
+        margin: 0;
+        margin-block-end: 10px;
+        padding-block-end: 30%;
+
+        @include mobile {
+            padding-block-end: 60%;
+        }
+
+        &:first-child {
+            padding-block-end: 40%;
+
+            @include mobile {
+                padding-block-end: 100%;
+            }
+        }
+    }
+}

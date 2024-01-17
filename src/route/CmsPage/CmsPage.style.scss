@@ -1,0 +1,128 @@
+/**
+ * ScandiPWA - Progressive Web App for Magento
+ *
+ * Copyright © Scandiweb, Inc. All rights reserved.
+ * See LICENSE for license details.
+ *
+ * @license OSL-3.0 (Open Software License ("OSL") v. 3.0)
+ * @package scandipwa/scandipwa
+ * @link https://github.com/scandipwa/scandipwa
+ */
+
+.CmsPage {
+    &_isBreadcrumbsHidden {
+        margin-block-start: calc(var(--header-total-height) + 12px);
+
+        @include mobile {
+            margin-block-start: calc(var(--header-total-height) + 14px);
+        }
+    }
+
+    &-Content {
+        @include mobile {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        h2 {
+            @include mobile {
+                text-align: center;
+            }
+        }
+    }
+
+    &-Wrapper {
+        grid-template-columns: auto;
+        max-width: var(--content-wrapper-width);
+        padding-inline: 32px;
+        margin-block-start: calc(var(--header-total-height) + 12px);
+        margin-block-end: var(--header-nav-height);
+        margin-inline: auto;
+        word-wrap: break-word;
+
+        @include mobile {
+            padding-inline: 14px;
+            margin-block-start: calc(var(--header-total-height) + 14px);
+        }
+
+        @include desktop {
+            margin-block-start: 24px;
+        }
+
+        &_page_width {
+            &_full {
+                max-width: 100%;
+                padding-inline: 0;
+            }
+        }
+    }
+
+    &-Heading {
+        margin-block-end: 18px;
+
+        @include mobile {
+            margin-block-end: 21px;
+            display: none;
+        }
+    }
+
+    &-SectionPlaceholder {
+        background-image: var(--placeholder-image);
+        background-size: var(--placeholder-size);
+        animation: var(--placeholder-animation);
+        margin: 0;
+        margin-block-end: 10px;
+        padding-block-end: 30%;
+
+        @include mobile {
+            padding-block-end: 60%;
+        }
+
+        &:first-child {
+            padding-block-end: 40%;
+
+            @include mobile {
+                padding-block-end: 100%;
+            }
+        }
+    }
+
+    .TextPlaceholder {
+        margin-block-end: 22px;
+        display: block;
+
+        @include mobile {
+            margin-block-end: 25px;
+        }
+    }
+
+    .Slider-Crumbs {
+        position: unset;
+        margin-block: 16px 40px;
+
+        @include mobile {
+            margin-block: 20px 28px;
+        }
+    }
+
+    h3 {
+        @include mobile {
+            font-size: 14px;
+        }
+    }
+
+    ul,
+    ol {
+        padding-inline-start: 40px;
+
+        li {
+            font-family: 'Open Sans', sans-serif;
+            list-style-position: outside;
+            list-style-type: inherit;
+
+            &::before {
+                display: none;
+            }
+        }
+    }
+}

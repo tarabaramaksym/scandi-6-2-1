@@ -1,0 +1,32 @@
+.TierPrices {
+    width: 100%;
+    margin-block-start: 15px;
+
+    &-Item {
+        font-size: 14px;
+        padding-inline-start: 0;
+
+        &:last-child {
+            margin-block-end: 12px;
+
+            @include mobile {
+                margin-block-end: 14px;
+            }
+        }
+
+        &::before {
+            content: none;
+        }
+
+        &_isLowest {
+            color: var(--secondary-dark-color);
+            font-size: 10px;
+            margin-block-end: 0;
+            line-height: 1.8;
+        }
+    }
+
+    &-ItemPrice {
+        font-weight: bold;
+    }
+}

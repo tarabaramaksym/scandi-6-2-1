@@ -1,0 +1,49 @@
+/**
+ * ScandiPWA - Progressive Web App for Magento
+ *
+ * Copyright © Scandiweb, Inc. All rights reserved.
+ * See LICENSE for license details.
+ *
+ * @license OSL-3.0 (Open Software License ("OSL") v. 3.0)
+ * @package scandipwa/scandipwa
+ * @link https://github.com/scandipwa/scandipwa
+ */
+
+:root {
+    --swipe-to-delete-bg-color: #ff3b30;
+    --right-side-content-animation-speed: .3s;
+}
+
+.SwipeToDelete {
+    --end-side-content-width: 0;
+
+    transform: translateX(var(--translateX));
+    transition: transform var(--animation-speed) ease-out;
+    z-index: 5;
+
+    [dir="rtl"] & {
+        transform: translateX(calc(-1 * var(--translateX)));
+    }
+
+    &-RightSideContentWrapper {
+        position: absolute;
+        inset-block-start: 0;
+        inset-inline-end: 0;
+        height: 100%;
+        width: calc(-1 * var(--translateX));
+        transition: width var(--animation-speed) ease-out;
+        overflow: hidden;
+        padding-inline-start: 16px;
+    }
+
+    &-RightSideContent {
+        height: 100%;
+        margin-inline-start: calc(100% - var(--end-side-content-width));
+        width: var(--end-side-content-width);
+        transition: margin-inline-start var(--right-side-content-animation-speed) ease-out;
+
+        &_isAheadRemoveItemThreshold {
+            margin-inline-start: 0;
+        }
+    }
+}

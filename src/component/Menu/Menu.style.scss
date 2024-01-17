@@ -1,0 +1,259 @@
+/**
+ * ScandiPWA - Progressive Web App for Magento
+ *
+ * Copyright © Scandiweb, Inc. All rights reserved.
+ * See LICENSE for license details.
+ *
+ * @license OSL-3.0 (Open Software License ("OSL") v. 3.0)
+ * @package scandipwa/scandipwa
+ * @link https://github.com/scandipwa/scandipwa
+ */
+
+:root {
+    --menu-item-height: 20px;
+}
+
+@mixin subcategory-visible {
+    pointer-events: all;
+    z-index: 10;
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.Menu {
+    &-CompareLink {
+        color: var(--color-black);
+        font-size: 14px;
+        font-weight: 400;
+        text-transform: none;
+        display: flex;
+        align-items: center;
+
+        .CompareIcon {
+            margin-inline-end: 12px;
+
+            &:hover {
+                fill: var(--color-black);
+            }
+        }
+
+        &Wrapper {
+            border-block-end: 1px solid var(--primary-divider-color);
+            padding-block-start: 17px;
+            padding-block-end: 16px;
+            padding-inline: 0;
+            margin: 0 16px;
+
+            @include mobile {
+                padding: 13px 0;
+            }
+        }
+    }
+
+    &-CompareCountInMenu {
+        font-style: normal;
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 16px;
+        inset-block-start: -1px;
+        margin-inline-start: auto;
+    }
+
+    &-ExpandedState {
+        --plus-minus-icon-size: 18px;
+
+        display: inline-block;
+        float: inline-end;
+
+        &:dir(rtl) {
+            float: inline-start;
+        }
+
+        position: absolute;
+        inset-inline-end: 0;
+
+        @include desktop {
+            display: none;
+        }
+    }
+
+    &-Item {
+        padding-inline-start: 0;
+
+        @include desktop {
+            height: var(--menu-item-height);
+            margin: 0;
+        }
+
+        &::before {
+            content: none;
+        }
+
+        &Caption {
+            color: var(--color-black);
+
+            &:hover {
+                color: var(--link-hover);
+            }
+
+            @include mobile {
+                margin-inline: 16px;
+            }
+
+            @include mobile {
+                padding-block: 16px;
+            }
+
+            &_isSecondLevel {
+                font-weight: 700;
+            }
+
+            &_type {
+                &_main {
+                    @include desktop {
+                        margin: 0 0 16px;
+                    }
+
+                    text-transform: uppercase;
+                    font-weight: 700;
+                    line-height: 20px;
+                }
+
+                &_subcategory {
+                    line-height: 20px;
+
+                    @include mobile {
+                        margin-inline-end: 0;
+                    }
+
+                    @include desktop {
+                        margin-block-start: 12px;
+                        display: inline-block;
+                    }
+                }
+            }
+        }
+
+        &Figure {
+            &_type_hideOnDesktop {
+                @include desktop {
+                    display: none;
+                }
+            }
+        }
+
+        &List {
+            @include desktop {
+                display: flex;
+
+                .Menu-SubMenu & {
+                    display: block;
+                }
+            }
+
+            &_type_subcategory {
+                @include mobile {
+                    padding-block: 8px;
+                }
+            }
+        }
+
+        &:not(:first-of-type) {
+            @include desktop {
+                margin-inline-start: 20px;
+            }
+        }
+    }
+
+    &-Link {
+        display: contents;
+        font-weight: 400;
+        margin-block: 8px;
+        margin-inline: 0 16px;
+    }
+
+    &-MainCategories {
+        margin: 0 auto;
+
+        @include desktop {
+            width: fit-content;
+
+            .Menu-Link {
+                font-weight: 700;
+            }
+        }
+    }
+
+    &-MenuWrapper {
+        @include desktop {
+            margin-block-start: 18px;
+        }
+    }
+
+    &-SubCategories {
+        @include desktop {
+            padding-inline: 32px;
+            padding-block-end: 8px;
+        }
+    }
+
+    &-Sub {
+        &ItemWrapper {
+            > .Menu-Link {
+                @include desktop {
+                    font-weight: 700;
+                }
+            }
+
+            break-inside: avoid;
+            overflow: hidden;
+        }
+
+        &Menu {
+            display: none;
+            margin-block-end: 28px;
+
+            &_isVisible {
+                background: var(--color-gray);
+                display: block;
+                padding-inline: 16px;
+
+                @include mobile {
+                    margin-block-end: 0;
+                }
+            }
+
+            @include desktop {
+                background: none;
+                display: block;
+                padding: 0;
+            }
+
+            .Menu-SubMenu & {
+                padding-block-end: 0;
+            }
+
+            .Menu-ItemCaption {
+                @include mobile {
+                    padding-block: 8px;
+                }
+
+                @include desktop {
+                    padding-block-end: 8px;
+                }
+            }
+
+            > .Menu-ItemList {
+                @include desktop {
+                    columns: 4;
+                }
+            }
+        }
+    }
+
+    &-MainCategoriesPlaceholder {
+        @include desktop {
+            height: calc(var(--menu-total-height) - 18px);
+        }
+    }
+}

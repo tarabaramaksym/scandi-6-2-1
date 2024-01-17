@@ -1,0 +1,179 @@
+/**
+ * ScandiPWA - Progressive Web App for Magento
+ *
+ * Copyright © Scandiweb, Inc. All rights reserved.
+ * See LICENSE for license details.
+ *
+ * @license OSL-3.0 (Open Software License ("OSL") v. 3.0)
+ * @package scandipwa/scandipwa
+ * @link https://github.com/scandipwa/scandipwa
+ */
+
+$select-width: 160px !default;
+$select-height: 45px !default;
+$select-option-height: 36px !default;
+$select-arrow-height: 14px !default;
+$select-arrow-width: 14px !default;
+
+.FieldSelect {
+    &-Clickable {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+    }
+
+    .ChevronIcon {
+        display: inline-block;
+        width: $select-arrow-width;
+        height: $select-arrow-height;
+        pointer-events: none;
+        position: absolute;
+        inset-inline-end: 12px;
+    }
+
+    &_isExpanded {
+        &::after {
+            transform: rotate(-90deg);
+        }
+    }
+
+    &-Select {
+        width: 100%;
+        padding-inline-end: 40px;
+        min-height: 30px;
+        height: max-content;
+
+        @include desktop {
+            pointer-events: none;
+        }
+
+        &_isExpanded {
+            border-color: var(--input-border-color-focus);
+            opacity: 1;
+        }
+
+        &_isDisabled {
+            opacity: 0.6;
+        }
+    }
+
+    &-Options {
+        position: absolute;
+        width: 100%;
+        inset-block-start: 100%;
+        inset-inline-start: 0;
+        z-index: 40;
+        overflow-y: auto;
+        border-style: solid;
+        border-width: 0 1px 1px;
+        border-color: transparent;
+        will-change: max-height;
+        max-height: 0;
+        -webkit-overflow-scrolling: touch;
+        min-width: 100%;
+        display: none;
+
+        &Wrapper {
+            @include desktop {
+                display: none;
+
+                &_isExpanded {
+                    display: block;
+                    overflow-y: auto;
+                    max-height: $select-option-height * 5;
+                }
+            }
+        }
+
+        @include mobile {
+            height: 0;
+        }
+
+        &_isExpanded {
+            display: block;
+
+            @include desktop {
+                z-index: 15;
+                max-height: fit-content;
+                border-color: var(--input-border-color);
+                background-color: #{$white};
+            }
+        }
+
+        &_isUpDirection {
+            inset-block-start: auto;
+            inset-block-end: 100%;
+            border-width: 1px 1px 0;
+        }
+
+        &_isNotScrollable {
+            overflow-y: hidden;
+
+            // Firefox support
+            /* stylelint-disable-next-line declaration-no-important */
+            scrollbar-width: none !important;
+            /* stylelint-disable-next-line declaration-no-important */
+            scrollbar-color: none !important;
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
+
+            &::-webkit-scrollbar-thumb {
+                display: none;
+            }
+        }
+    }
+
+    &-Option {
+        cursor: pointer;
+        padding: 0;
+        margin: 0;
+        z-index: 1;
+        will-change: max-height;
+        min-height: $select-option-height;
+        line-height: 16px;
+        padding-block: 10px;
+        padding-inline-start: 20px;
+        background: var(--color-white);
+
+        @include mobile {
+            line-height: 42px;
+            padding-inline-start: 21px;
+        }
+
+        &_isPlaceholder {
+            opacity: 0.6;
+        }
+
+        &::before {
+            content: none;
+        }
+
+        &:last-of-type {
+            margin: 0;
+        }
+
+        &:hover,
+        &:focus {
+            @include desktop {
+                background: var(--secondary-base-color);
+            }
+        }
+
+        &_isHovered {
+            @include desktop {
+                background: var(--secondary-base-color);
+            }
+        }
+
+        &_isDisabled {
+            pointer-events: none;
+            opacity: 0.6;
+
+            @include mobile {
+                border-top: 1px solid var(--input-border-color-focus);
+            }
+        }
+    }
+}

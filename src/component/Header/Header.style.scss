@@ -1,0 +1,474 @@
+/**
+ * ScandiPWA - Progressive Web App for Magento
+ *
+ * Copyright © Scandiweb, Inc. All rights reserved.
+ * See LICENSE for license details.
+ *
+ * @license OSL-3.0 (Open Software License ("OSL") v. 3.0)
+ * @package scandipwa/scandipwa
+ * @link https://github.com/scandipwa/scandipwa
+ */
+
+:root {
+    --header-logo-width: 194px;
+    --header-logo-height: 24px;
+}
+
+@mixin button-invisible {
+    margin: 0;
+    opacity: 0;
+    overflow: hidden;
+    padding: 0;
+    pointer-events: none;
+    width: 0;
+    height: 0;
+}
+
+@mixin button-visible {
+    opacity: 1;
+    height: 25px;
+    width: 25px;
+    pointer-events: all;
+    overflow: visible;
+    cursor: pointer;
+}
+
+@mixin visible-on-mobile {
+    @include button-visible;
+
+    @include desktop {
+        @include button-invisible;
+    }
+}
+
+@mixin logo-visible {
+    opacity: 1;
+    max-width: 100%;
+}
+
+.Header {
+    align-items: center;
+    background: var(--color-white);
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    padding-block-start: env(safe-area-inset-top, 0);
+    width: 100%;
+    position: fixed;
+    z-index: 100;
+    border-block-end: 1px solid var(--primary-divider-color);
+    inset-block-start: var(--demo-notice-height);
+
+    > * {
+        max-width: var(--content-wrapper-width);
+        width: 100%;
+    }
+
+    &_menu,
+    &_menu_subcategory {
+        .Header-Button_type {
+            &_close {
+                @include desktop {
+                    @include button-visible;
+                }
+            }
+
+            &_menu {
+                @include desktop {
+                    @include button-invisible;
+                }
+            }
+        }
+    }
+
+    &_name {
+        &_menu {
+            border-block-end: none;
+        }
+
+        &_search,
+        &_menu_subcategory {
+            border-block-end: 1px solid var(--primary-divider-color);
+
+            @include mobile {
+                border-block-end: none;
+            }
+        }
+
+        &_category {
+            position: fixed;
+
+            @include mobile {
+                border-block-end: none;
+            }
+        }
+    }
+
+    &-Button {
+        @include button-invisible;
+
+        &_isVisible {
+            @include mobile {
+                @include button-visible;
+            }
+        }
+
+        &_isDisabled {
+            pointer-events: none;
+            opacity: .1;
+        }
+
+        &_type {
+            &_menu,
+            &_minicart {
+                @include button-visible;
+
+                @include desktop {
+                    height: 24px;
+                    margin-inline-start: 35px;
+                }
+            }
+
+            &_account {
+                @include button-visible;
+            }
+
+            &_home {
+                @include visible-on-mobile;
+            }
+
+            &_minicart {
+                @include desktop {
+                    margin-inline-start: 35px;
+                }
+            }
+
+            &_back {
+                .ChevronIcon {
+                    width: 20px;
+                    height: 20px;
+                    vertical-align: middle;
+                }
+            }
+
+            &_close {
+                .CloseIcon {
+                    width: 27px;
+                    height: 27px;
+                }
+            }
+
+            &_share {
+                @include button-visible;
+            }
+
+            &_compare {
+                @include button-visible;
+            }
+        }
+
+        &[aria-hidden="true"] {
+            display: none;
+        }
+    }
+
+    &-IconsWrapper {
+        display: flex;
+    }
+
+    &-MinicartButtonWrapper {
+        cursor: pointer;
+        height: 100%;
+        width: 100%;
+    }
+
+    &-CompareButtonWrapper {
+        margin-inline-start: 35px;
+        height: 24px;
+
+        a {
+            all: initial;
+        }
+    }
+
+    &-CompareCount {
+        background: #0A0903;
+        border-radius: 8px;
+        color: var(--color-white);
+        height: 17px;
+        padding: 2px;
+        position: absolute;
+        min-width: 17px;
+        display: flex;
+        font-size: 11px;
+        justify-content: center;
+        align-items: center;
+        font-weight: 700;
+        font-family: "Muli", sans-serif;
+
+        @include mobile {
+            inset-block-start: -7px;
+            inset-inline-end: -11px;
+        }
+
+        @include desktop {
+            inset-block-start: -10px;
+            inset-inline-end: -12px;
+        }
+    }
+
+    &-LogoWrapper {
+        inset-block-end: 0;
+        height: var(--header-logo-height);
+        inset-inline-start: 0;
+        max-width: 0;
+        opacity: 0;
+        overflow: hidden;
+        inset-inline-end: 0;
+        inset-block-start: 0;
+        width: var(--header-logo-width);
+
+        @include mobile {
+            margin: auto;
+        }
+
+        @include desktop {
+            grid-column: 1 / 2;
+            min-height: var(--header-nav-height);
+            position: absolute;
+
+            @include logo-visible;
+        }
+
+        &_isVisible {
+            @include logo-visible;
+        }
+    }
+
+    &-Minicart {
+        &ItemCount {
+            background: var(--primary-base-color);
+            border-radius: 8px;
+            color: var(--color-white);
+            height: 17px;
+            padding: 2px;
+            position: absolute;
+            min-width: 17px;
+            display: flex;
+            font-size: 11px;
+            justify-content: center;
+            align-items: center;
+            font-weight: 700;
+
+            @include mobile {
+                inset-block-start: -7px;
+                inset-inline-end: -11px;
+            }
+
+            @include desktop {
+                inset-block-start: -10px;
+                inset-inline-end: -12px;
+            }
+        }
+    }
+
+    &-Nav {
+        align-items: center;
+        display: flex;
+        height: var(--header-nav-height);
+        margin: auto;
+        max-width: var(--content-wrapper-width);
+        padding-inline: 14px;
+
+        @include desktop {
+            display: grid;
+            grid-template-columns: minmax(var(--header-logo-width), 1fr) minmax(auto, 660px) 1fr;
+            justify-content: unset;
+            padding-inline: 32px;
+        }
+    }
+
+    &-MyAccount {
+        @include desktop {
+            height: 24px;
+        }
+    }
+
+    &-News {
+        align-items: center;
+        display: flex;
+
+        &Button {
+            font-size: 12px;
+            margin-inline-start: 5px;
+        }
+
+        .ExclamationMarkIcon {
+            inset-block-end: 1px;
+            height: 16px;
+            margin-inline-end: 10px;
+            width: 16px;
+        }
+    }
+
+    &-Title {
+        color: var(--header-color);
+        margin: auto;
+        opacity: 0;
+        overflow: hidden;
+        pointer-events: none;
+        position: absolute;
+        inset-inline-end: 0;
+        text-align: center;
+        text-overflow: ellipsis;
+        inset-block-start: -1px;
+        inset-inline-start: 0;
+        inset-block-end: 0;
+        transition-duration: 200ms;
+        transition-property: opacity;
+        white-space: nowrap;
+        width: 100%;
+        text-transform: inherit;
+        line-height: 30px;
+        height: 30px;
+
+        @include mobile {
+            line-height: 28px;
+        }
+
+        &_isVisible {
+            @include mobile {
+                opacity: 1;
+                max-width: calc(100% - 80px);
+            }
+        }
+    }
+
+    &-Welcome {
+        display: none;
+        font-size: 14px;
+        margin-inline-end: 16px;
+        text-align: end;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        max-width: 200px;
+        align-self: center;
+        line-height: 16px;
+
+        @include wide-desktop {
+            display: block;
+        }
+    }
+
+    &-TopMenu {
+        display: flex;
+        justify-content: space-between;
+        height: var(--header-top-menu-height);
+        margin: auto;
+        max-width: var(--content-wrapper-width);
+        padding-inline: 32px;
+        padding-block-start: 16px;
+    }
+
+    &-Switcher {
+        align-items: center;
+        display: flex;
+    }
+
+    &_isCheckout {
+        .Header {
+            &-Nav {
+                display: flex;
+            }
+
+            &-IconsWrapper {
+                display: flex;
+                width: 100%;
+            }
+
+            &-LogoWrapper {
+                position: relative;
+                flex-shrink: 0;
+            }
+
+            &-Button_type_account {
+                display: block;
+            }
+
+            &-Button_type_close,
+            &-Button_type_back {
+                @include desktop {
+                    display: none;
+                }
+            }
+
+            &-MyAccount {
+                @include desktop {
+                    height: 24px;
+                }
+
+                @include mobile {
+                    position: absolute;
+                    inset-inline-end: 10px;
+                    width: auto;
+                }
+            }
+        }
+
+        .MyAccountOverlay {
+            @include mobile {
+                inset-block-start: var(--header-total-height);
+                height: calc(100vh - var(--header-total-height));
+                position: fixed;
+                width: 100vw;
+            }
+        }
+    }
+
+    &-Wrapper {
+        display: flex;
+        justify-content: center;
+        margin-block-end: var(--header-total-height);
+
+        @include mobile {
+            z-index: 801;
+        }
+
+        &_isPrerendered {
+            @include mobile {
+                .Header-TopMenu,
+                .Menu-MenuWrapper {
+                    display: none;
+                }
+
+                .Header-Nav {
+                    & > * {
+                        display: none;
+                    }
+
+                    .Header {
+                        &-Title,
+                        &-LogoWrapper,
+                        &-Button {
+                            &_isVisible {
+                                display: block;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &_name_popup {
+        @include mobile {
+            z-index: 450;
+        }
+    }
+
+    &-MyAccountContainer {
+        display: flex;
+        margin-inline-start: auto;
+    }
+}

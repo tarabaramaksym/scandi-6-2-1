@@ -1,0 +1,125 @@
+
+/**
+ * ScandiPWA - Progressive Web App for Magento
+ *
+ * Copyright © Scandiweb, Inc. All rights reserved.
+ * See LICENSE for license details.
+ *
+ * @license OSL-3.0 (Open Software License ("OSL") v. 3.0)
+ * @package scandipwa/scandipwa
+ * @link https://github.com/scandipwa/scandipwa
+ */
+
+.ProductAttributes {
+    font-size: 14px;
+    line-height: 20px;
+
+    &-Wrapper {
+        @include desktop {
+            padding-block-end: 32px;
+        }
+    }
+
+    &-ExpandableContentButton {
+        @include desktop {
+            display: none;
+        }
+    }
+
+    &-ExpandableContentContent {
+        &_isContentExpanded {
+            @include mobile {
+                padding-block: 0;
+            }
+        }
+
+        @include desktop {
+            columns: 2;
+            column-gap: 60px;
+        }
+    }
+
+    &-AttributeBlock {
+        break-inside: avoid;
+        overflow: hidden;
+        width: 100%;
+    }
+
+    &-Placeholder {
+        margin-block-start: 24px;
+
+        @include mobile {
+            margin-block-start: 28px;
+        }
+
+        span {
+            display: block;
+            margin-block-end: 12px;
+
+            @include mobile {
+                margin-block-end: 14px;
+            }
+        }
+    }
+
+    &-Group {
+        margin: 0;
+        padding-block: 32px 16px;
+    }
+
+    &-Attributes {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    &-ValueLabel,
+    &-AttributeLabel {
+        border-block-end: 1px solid var(--secondary-base-color);
+        flex: 0 0 50%;
+        overflow: hidden;
+        padding-block: 16px;
+        text-overflow: ellipsis;
+        height: 100%;
+
+        @include mobile {
+            line-height: 20px;
+        }
+
+        &:last-of-type {
+            border: none;
+        }
+    }
+
+    &-ValueLabel {
+        img {
+            max-height: auto;
+            max-width: auto;
+            object-fit: cover;
+            vertical-align: middle;
+        }
+
+        .Image-Content {
+            position: inherit;
+        }
+    }
+
+    &-AttributeLabel {
+        font-weight: bold;
+    }
+
+    &-Image {
+        padding-block-end: 40%;
+        mix-blend-mode: multiply;
+        margin-inline-end: 120px;
+        min-width: 360px;
+        background: none;
+
+        @include mobile {
+            margin-inline-end: 140px;
+            min-width: 420px;
+            display: none;
+        }
+    }
+}

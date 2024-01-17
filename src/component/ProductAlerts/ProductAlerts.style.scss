@@ -1,0 +1,36 @@
+/**
+ * ScandiPWA - Progressive Web App for Magento
+ *
+ * Copyright © Scandiweb, Inc. All rights reserved.
+ * See LICENSE for license details.
+ *
+ * @license OSL-3.0 (Open Software License ("OSL") v. 3.0)
+ * @package scandipwa/scandipwa
+ * @link https://github.com/scandipwa/scandipwa
+ */
+
+.ProductAlerts {
+    &-Wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    &-InStock,
+    &-PriceDrop {
+        text-align: start;
+        color: var(--primary-base-color);
+        cursor: pointer;
+        font-size: 14px;
+        
+        @include hoverable {
+            &:hover {
+                color: var(--primary-dark-color);
+            }
+        }
+
+        [dir="rtl"] & {
+            text-align: end;
+        }
+    }
+}

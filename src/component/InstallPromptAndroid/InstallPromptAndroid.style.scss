@@ -1,0 +1,54 @@
+:root {
+    --install-prompt-android-background: #eee;
+}
+
+.InstallPromptAndroid {
+    --button-background: var(--homepage-button-background);
+    --button-color: var(--homepage-button-color);
+    --button-border: transparent;
+    --button-hover-background: var(--homepage-button-color);
+    --button-hover-color: var(--homepage-button-background);
+    --button-hover-border: transparent;
+    --button-padding: 40px;
+    --button-border-width: 0;
+
+    background: var(--install-prompt-android-background);
+    padding: 12px;
+    margin: 12px;
+
+    @include mobile {
+        padding: 14px;
+        margin: 14px;
+    }
+
+    &-Content {
+        @include mobile {
+            font-size: 14px;
+            line-height: 24px;
+            text-align: center;
+            padding-block-start: 28px;
+            padding-inline: 0;
+        }
+    }
+
+    &-Close {
+        position: absolute;
+        z-index: 10;
+        inset-block-start: 0;
+        inset-inline-end: 0;
+        width: 40px;
+        height: 40px;
+
+        &::before,
+        &::after {
+            inset-block-start: 12px;
+        }
+    }
+
+    &-Button {
+        display: block;
+        margin: auto;
+        width: max-content;
+        background-color: var(--color-white);
+    }
+}

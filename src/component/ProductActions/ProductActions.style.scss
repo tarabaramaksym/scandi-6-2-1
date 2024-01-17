@@ -1,0 +1,324 @@
+/**
+ * ScandiPWA - Progressive Web App for Magento
+ *
+ * Copyright © Scandiweb, Inc. All rights reserved.
+ * See LICENSE for license details.
+ *
+ * @license OSL-3.0 (Open Software License ("OSL") v. 3.0)
+ * @package scandipwa/scandipwa
+ * @link https://github.com/scandipwa/scandipwa
+ */
+
+
+
+.ProductActions {
+    line-height: 16px;
+
+    &-Attributes {
+        padding: 0;
+    }
+
+    &-Brand {
+        font-weight: bold;
+        opacity: .48;
+        font-size: 12px;
+        line-height: 16px;
+    }
+
+    &-ShortDescription {
+        @include description-tags {
+            line-height: 20px;
+        }
+
+        font-size: 14px;
+        margin-block: 16px;
+        line-height: 20px;
+
+        div[itemprop="description"] {
+            word-break: break-word;
+        }
+
+        div[itemprop="description"] ul,
+        div[itemprop="description"] ol {
+            padding-inline-start: 20px;
+
+            li {
+                font-family: 'Open Sans', sans-serif;
+                list-style-position: inside;
+                list-style-type: inherit;
+
+                &::before {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    &-Stock {
+        font-weight: bold;
+        order: 0;
+
+        @include desktop {
+            margin-inline-end: 24px;
+        }
+
+        @include mobile {
+            font-style: normal;
+            font-size: 12px;
+            line-height: 22px;
+            margin-block-start: 8px;
+        }
+    }
+
+    &-Sku {
+        order: 1;
+
+        @include mobile {
+            font-weight: normal;
+            font-size: 12px;
+            margin-block-start: 4px;
+            text-align: end;
+        }
+
+        & + .ProductActions-Sku {
+            margin-inline-start: 1ex;
+        }
+    }
+
+    &-Review {
+        order: 2;
+        font-weight: 700;
+        cursor: pointer;
+        inset-block-end: -2px;
+        font-size: 14px;
+
+        @include mobile {
+            inset-block-end: 0;
+        }
+
+        &Text {
+            color: var(--primary-base-color);
+
+            &:hover {
+                color: var(--primary-dark-color);
+            }
+
+            &_isNotSafariOrIos {
+                @include mobile {
+                    vertical-align: -webkit-baseline-middle;
+                }
+            }
+        }
+    }
+
+    &-Section {
+        &_type {
+            &_sku {
+                display: flex;
+
+                @include mobile {
+                    flex: 1;
+                    align-items: flex-end;
+                    flex-direction: column;
+                }
+
+                .TextPlaceholder {
+                    line-height: 30px;
+                }
+            }
+
+            &_alerts {
+                margin-block-start: 10px;
+                margin-block-end: 10px;
+            }
+        }
+    }
+
+    &-Schema {
+        min-width: 150px;
+    }
+
+    &-SchemaUrl {
+        display: none;
+    }
+
+    &-PriceWrapper {
+        @include desktop {
+            margin-block-start: 24px;
+        }
+
+        .TextPlaceholder {
+            line-height: 30px;
+        }
+    }
+
+    &-ActionButtons {
+        display: flex;
+    }
+
+    &-ActionsWrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-block-end: 12px;
+
+        &:nth-child(2) {
+            @include mobile {
+                align-items: start;
+            }
+        }
+
+        &:nth-child(3) {
+            @include mobile {
+                margin-block-end: 22px;
+            }
+        }
+
+        @include desktop {
+            margin-block: 18px;
+        }
+
+        .ProductCompareButton {
+            margin-inline-start: auto;
+        }
+
+        &_isWithoutPriceTotal .ProductActions-Section_type_sku {
+            @include mobile {
+                float: end;
+            }
+        }
+    }
+
+    &-AddToCartFixed {
+        @include mobile-bottom-wrapper {
+            padding: 12px 16px;
+            inset-block-end: 16px;
+            display: flex;
+        }
+
+        .ProductWishlistButton {
+            margin-inline: 18px 4px;
+            margin-block: auto;
+        }
+
+        .Field {
+            &-Wrapper {
+                &_type {
+                    &_number_with_controls {
+                        @include mobile {
+                            display: flex;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &-AddToCartWrapper {
+        align-items: center;
+        display: flex;
+        margin-block-start: 24px;
+
+        .ProductActions-AddToCart {
+            margin-inline-end: 16px;
+
+            @include ultra-narrow-desktop {
+                order: 10;
+                margin-block-start: 24px;
+            }
+        }
+
+        .ProductCompareButton,
+        .ProductWishlistButton {
+            margin-inline: 16px;
+        }
+
+        @include ultra-narrow-desktop {
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        &_isPrerendered {
+            @include mobile {
+                inset-block-end: 0;
+            }
+        }
+
+        .Field-ErrorMessages {
+            position: absolute;
+        }
+    }
+
+    &-Qty {
+        &.Field {
+            margin-block: 0;
+
+            @include desktop {
+                margin-inline-end: 32px;
+            }
+
+            @include mobile {
+                margin-inline-end: 12px;
+
+                input {
+                    min-width: 36px;
+                }
+            }
+        }
+
+        button {
+            &:not([disabled]) {
+                cursor: pointer;
+            }
+
+            &:disabled {
+                cursor: default;
+            }
+
+            &:active {
+                border-color: var(--primary-dark-color);
+            }
+
+            @include hoverable {
+                &:hover {
+                    border-color: var(--primary-dark-color);
+                }
+            }
+        }
+    }
+
+    &-AttributesWrapper {
+        @include mobile {
+            margin-block-end: 16px;
+        }
+
+        &.animate {
+            animation: shake 820ms .5ms cubic-bezier(.36, .07, .19, .97) both;
+        }
+    }
+
+    &-GroupedItems {
+        margin-block-start: 24px;
+    }
+
+    &-Reviews {
+        margin-block-end: 10px;
+        display: flex;
+
+        @include mobile {
+            margin-block-end: 0;
+        }
+
+        .ProductReviewRating {
+            margin-inline-end: 24px;
+        }
+    }
+
+    .ProductConfigurableAttributes-Expandable {
+        margin-block-start: 24px;
+    }
+
+    .ExpandableContent:first-of-type {
+        border-block-start: 0;
+    }
+}

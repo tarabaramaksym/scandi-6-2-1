@@ -1,0 +1,27 @@
+.CarouselScrollItem {
+    display: flex;
+    scroll-snap-align: start;
+    border: solid 1px var(--option-border-color);
+    transition: border-color var(--animation-speed), filter var(--animation-speed);
+    filter: opacity(.5);
+    flex: 1;
+    cursor: pointer;
+    width: 57px;
+    height: var(--carousel-scroll-item-height);
+    border-color: var(--option-border-color);
+    border-radius: 2px;
+
+    & + .CarouselScrollItem {
+        margin-inline-start: var(--carousel-scroll-gap);
+    }
+
+    &_isActive {
+        filter: opacity(1);
+        border-color: var(--option-border-color);
+    }
+
+    &:focus,
+    &:hover {
+        filter: opacity(1);
+    }
+}

@@ -1,0 +1,98 @@
+/**
+ * ScandiPWA - Progressive Web App for Magento
+ *
+ * Copyright © Scandiweb, Inc. All rights reserved.
+ * See LICENSE for license details.
+ *
+ * @license OSL-3.0 (Open Software License ("OSL") v. 3.0)
+ * @package scandipwa/scandipwa
+ * @link https://github.com/scandipwa/scandipwa
+ */
+
+.LoginAccount {
+    .ContentWrapper {
+        min-height: calc(100vh - var(--header-total-height));
+        padding-block-start: 28px;
+        padding-block-end: 50px;
+        padding-inline: 20px;
+
+        @include desktop() {
+            padding-block-start: 25px;
+        }
+    }
+
+    &-CreateAccountButton {
+        width: 100%;
+    }
+
+    &-InnerWrapper {
+        @include desktop() {
+            display: grid;
+            justify-content: space-around;
+            margin: 0 auto;
+            padding-block-start: 0;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 100px;
+        }
+
+        .MyAccountOverlay {
+            &-Additional {
+                display: none;
+            }
+        }
+
+        button {
+            margin-block-end: 7px;
+
+            @include desktop {
+                margin-block-start: 20px;
+            }
+        }
+
+        input {
+            @include mobile {
+                width: 100%;
+            }
+
+            @include desktop {
+                width: 100%;
+            }
+        }
+
+        > div {
+            flex: 1;
+
+            @include desktop {
+                margin: 0 10px;
+            }
+        }
+
+        h4 {
+            padding-block-end: 7px;
+            text-align: center;
+        }
+
+        p {
+            margin-block-end: 20px;
+        }
+    }
+
+    .Loader {
+        margin: 0;
+    }
+
+    &-CreateAccountWrapper {
+        margin-block-start: 24px;
+        display: flex;
+        align-items: center;
+
+        h4 {
+            margin-block-end: 0;
+        }
+
+        button {
+            width: auto;
+            margin-inline-start: 5px;
+        }
+    }
+}

@@ -1,0 +1,192 @@
+/**
+ * ScandiPWA - Progressive Web App for Magento
+ *
+ * Copyright © Scandiweb, Inc. All rights reserved.
+ * See LICENSE for license details.
+ *
+ * @license OSL-3.0 (Open Software License ("OSL") v. 3.0)
+ * @package scandipwa/scandipwa
+ * @link https://github.com/scandipwa/scandipwa
+ */
+
+:root {
+    --footer-content-height: 220px;
+    --footer-copyright-height: 50px;
+    --footer-nav-height: 48px;
+    --footer-total-height: calc(env(safe-area-inset-bottom) + var(--footer-nav-height));
+}
+
+.Footer {
+    $column-count: 4;
+
+    @include mobile {
+        margin-block-end: var(--navigation-tabs-height);
+    }
+
+    &-CopyrightContentWrapper {
+        background-color: var(--secondary-base-color);
+    }
+
+    &-CopyrightContent {
+        padding: 10px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: var(--footer-copyright-height);
+
+        @include desktop {
+            padding-block-end: 48px;
+        }
+    }
+
+    &-Copyright {
+        font-size: 12px;
+        text-align: center;
+        color: var(--secondary-dark-color);
+        padding-inline: 16px;
+        line-height: 16px;
+
+        a {
+            color: inherit;
+            font-weight: 400;
+            font-size: 12px;
+
+            &:hover {
+                color: var(--primary-base-color);
+            }
+        }
+    }
+
+    &-Content {
+        min-height: var(--footer-content-height);
+        background-color: var(--secondary-base-color);
+    }
+
+    &-Columns {
+        display: flex;
+        height: 100%;
+        justify-content: space-between;
+
+        @include mobile {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 25px 16px;
+        }
+
+        @include desktop {
+            padding-inline: 32px;
+            padding-block-start: 80px;
+        }
+
+        @include tablet {
+            padding-inline: 30px;
+        }
+    }
+
+    &-Column {
+        @include mobile {
+            width: 100%;
+        }
+
+        &:not(:last-of-type) {
+            @include mobile {
+                margin-block-end: 30px;
+            }
+
+            @include desktop {
+                padding-inline-end: 20px;
+                max-width: calc(100% / #{ $column-count - 1 });
+            }
+        }
+    }
+
+    &-ColumnTitle {
+        margin: 0;
+        margin-block-end: 15px;
+
+        @include desktop {
+            margin-block-end: 20px;
+        }
+    }
+
+    &-ColumnContent {
+        display: flex;
+        flex-direction: column;
+
+        &_direction_horizontal {
+            flex-direction: row;
+
+            @include mobile {
+                justify-content: center;
+            }
+        }
+    }
+
+    &-ColumnItem {
+        border-radius: 2px;
+        color: inherit;
+        margin-block-end: 12px;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 20px;
+
+        &:last-of-type {
+            margin: 0;
+        }
+
+        &:hover {
+            text-decoration: underline;
+        }
+
+        &Image {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            img {
+                // important required as default 100% width is passed as inline style
+                // + you can't achieve same centering with just passing '16px' as inline style for the case
+                /* stylelint-disable-next-line declaration-no-important */
+                width: 16px!important;
+                inset-block-start: 50%;
+                inset-inline-start: 50%;
+                transform: translate(-50%, -50%);
+
+                &:dir(rtl) {
+                    transform: translate(50%, -50%);
+                }
+
+                &:hover {
+                    opacity: 0.6;
+                }
+            }
+        }
+
+        &_type_image {
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--secondary-dark-color);
+
+            &:not(:last-of-type) {
+                margin-inline-end: 20px;
+            }
+        }
+    }
+
+    &-CmsBlockWrapper {
+        .CmsBlock-Wrapper {
+            flex: 1;
+        }
+
+        .ContentWrapper .Footer-Columns {
+            padding: 0;
+        }
+
+        .Footer-Column_isNewsletter {
+            @include desktop {
+                padding-inline-start: 100px;
+            }
+        }
+    }
+}

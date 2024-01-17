@@ -1,0 +1,136 @@
+/**
+ * ScandiPWA - Progressive Web App for Magento
+ *
+ * Copyright © Scandiweb, Inc. All rights reserved.
+ * See LICENSE for license details.
+ *
+ * @license OSL-3.0 (Open Software License ("OSL") v. 3.0)
+ * @package scandipwa/scandipwa
+ * @link https://github.com/scandipwa/scandipwa
+ */
+
+:root {
+    --popup-background: #0003;
+
+    @include mobile {
+        --popup-content-padding: 14px;
+    }
+
+    --popup-content-background: #{$white};
+    --popup-min-width: 100%;
+    --popup-content-padding: 12px;
+    --popup-max-height: 80%;
+
+    @include desktop {
+        --popup-min-width: 490px;
+        --popup-content-padding: 24px;
+    }
+}
+
+.Popup {
+    opacity: 0;
+    pointer-events: none;
+    z-index: 400;
+    position: fixed;
+    background-color: var(--popup-background);
+    inset-inline-start: 0;
+    inset-block-start: var(--header-total-height);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include mobile {
+        align-items: stretch;
+    }
+
+    &_isVisible {
+        pointer-events: all;
+        opacity: 1;
+        width: 100vw;
+        height: 100vh;
+        inset-block-start: 0;
+
+        @include mobile {
+            inset-block-start: var(--header-total-height);
+            height: calc(100% - var(--header-total-height));
+        }
+    }
+
+    &-Heading {
+        text-decoration: none;
+        font-weight: 400;
+        margin-block-start: 0;
+    }
+
+    &-Header {
+        @include mobile {
+            display: none;
+        }
+    }
+
+    &-Content {
+        background-color: var(--popup-content-background);
+        border-radius: 5px;
+        padding: var(--popup-content-padding);
+        padding-block-end: 0;
+        min-width: var(--popup-min-width);
+        max-width: 100%;
+        overflow-x: hidden;
+        max-height: var(--popup-max-height);
+        overflow-y: auto;
+
+        &::after {
+            content: '';
+            display: block;
+            padding-block-end: var(--popup-content-padding);
+        }
+
+        @include mobile {
+            border-radius: 0;
+            max-height: 100%;
+        }
+    }
+
+    & &-CloseBtn {
+        position: absolute;
+        inset-block-start: -4px;
+        inset-inline-end: -6px;
+        z-index: 5;
+
+        .CloseIcon {
+            height: 30px;
+            width: 30px;
+        }
+
+        @include mobile {
+            inset-block-start: 25px;
+        }
+    }
+
+    .Loader {
+        @include mobile {
+            position: fixed;
+        }
+    }
+
+    .NotificationList {
+        width: 100vw;
+        inset-block-start: 0;
+        inset-inline-start: calc(0px - var(--popup-content-padding));
+        position: relative;
+    }
+}
+
+.scrollDisabled {
+    margin-block-start: 0;
+    width: 100%;
+
+    @include desktop {
+        position: fixed;
+        overflow-y: scroll;
+    }
+
+    @include mobile {
+        overflow: hidden;
+    }
+}

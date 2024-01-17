@@ -1,0 +1,47 @@
+/**
+ * ScandiPWA - Progressive Web App for Magento
+ *
+ * Copyright © Scandiweb, Inc. All rights reserved.
+ * See LICENSE for license details.
+ *
+ * @license OSL-3.0 (Open Software License ("OSL") v. 3.0)
+ * @package scandipwa/scandipwa
+ * @link https://github.com/scandipwa/scandipwa
+ */
+
+.FieldGroup {
+    &-Error {
+        &Messages {
+            color: var(--primary-error-color);
+            font-size: 12px;
+            margin-block-end: -.1em;
+        }
+    }
+
+    &_isValid {
+        border-inline-start: 2px solid var(--primary-success-color);
+        padding-inline-start: 10px;
+    }
+
+    &_hasError {
+        border-inline-start: 2px solid var(--primary-error-color);
+        padding-inline-start: 10px;
+        margin-block-end: 6px;
+
+        .Field {
+            color: var(--primary-error-color);
+
+            [type="checkbox"], [type="radio"] {
+                + .input-control {
+                    border-color: var(--primary-error-color);
+                }
+
+                &:hover + .input-control {
+                    @include desktop {
+                        border-color: var(--checkbox-border-color-active);
+                    }
+                }
+            }
+        }
+    }
+}

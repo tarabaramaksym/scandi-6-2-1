@@ -1,0 +1,98 @@
+/**
+ * ScandiPWA - Progressive Web App for Magento
+ *
+ * Copyright © Scandiweb, Inc. All rights reserved.
+ * See LICENSE for license details.
+ *
+ * @license OSL-3.0 (Open Software License ("OSL") v. 3.0)
+ * @package scandipwa/scandipwa
+ * @link https://github.com/scandipwa/scandipwa
+ */
+
+.HomepageCategories {
+    @include desktop {
+        grid-gap: 12px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        margin-block-start: 3px;
+    }
+
+    &-Figure {
+        @include mobile {
+            margin-block-start: 24px;
+        }
+
+        @include desktop {
+            margin-block-start: 5px;
+        }
+
+        > .Image {
+            border-block-end: 1px solid var(--primary-divider-color);
+        }
+
+        .Image {
+            display: block;
+            height: 0;
+            padding-block-end: 84.5%;
+
+            &-Image {
+                object-fit: cover;
+                border: 1px solid var(--primary-divider-color);
+            }
+        }
+    }
+
+    &-Figcaption {
+        --button-color: var(--color-white);
+        --button-padding: 40px;
+        --hollow-button-background: var(--color-white);
+        --hollow-button-hover-background: var(--color-white);
+        --hollow-button-hover-height: none;
+
+        position: absolute;
+        inset-block-end: 24px;
+        text-align: center;
+
+        @include desktop {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 100%;
+            padding-inline: 16px;
+        }
+
+        &_isPlaceholder {
+            padding-block-end: 31px;
+        }
+
+        @include mobile {
+            width: 100%;
+            padding-inline: 16px;
+            inset-block-end: 16px;
+        }
+    }
+
+    a {
+        display: block;
+    }
+
+    &-Button,
+    &-Button:not([disabled]):hover {
+        align-self: center;
+        height: max-content;
+        min-height: 48px;
+        flex-wrap: wrap;
+        padding-block: 10px;
+        padding-inline: 20px;
+        overflow-wrap: break-word;
+
+        @include desktop {
+            max-width: 20vw;
+            word-break: break-all;
+        }
+
+        @include mobile {
+            max-width: 80vw;
+        }
+    }
+}

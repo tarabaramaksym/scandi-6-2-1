@@ -1,0 +1,62 @@
+/**
+ * ScandiPWA - Progressive Web App for Magento
+ *
+ * Copyright © Scandiweb, Inc. All rights reserved.
+ * See LICENSE for license details.
+ *
+ * @license OSL-3.0 (Open Software License ("OSL") v. 3.0)
+ * @package scandipwa/scandipwa
+ * @link https://github.com/scandipwa/scandipwa
+ */
+
+:root {
+    --newsletter-subscription-input-background: var(--input-background-color);
+    --newsletter-subscription-placeholder-color: var(--secondary-dark-color);
+    --newsletter-subscription-button-background: var(--link-color);
+}
+
+.NewsletterSubscription {
+    min-width: 230px;
+
+    .FieldForm {
+        &-Fieldset {
+            &_isLoading {
+                opacity: .7;
+                pointer-events: none;
+            }
+
+            .Field {
+                width: 100%;
+                margin-block-start: 0;
+
+                &-Message {
+                    position: absolute;
+                }
+
+                input {
+                    background-color: var(--newsletter-subscription-input-background);
+                    padding: 14px 12px;
+
+                    &::placeholder {
+                        color: var(--newsletter-subscription-placeholder-color);
+                    }
+                }
+            }
+        }
+
+        &-Fields {
+            margin-block-end: 0;
+        }
+    }
+
+    .Form {
+        &_isInvalid {
+            margin-block-end: 18px;
+        }
+    }
+
+    .Button {
+        margin-block-start: 16px;
+        width: 100%;
+    }
+}

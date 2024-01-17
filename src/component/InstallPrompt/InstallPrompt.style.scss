@@ -1,0 +1,14 @@
+.InstallPrompt {
+    // prevent margin merging
+    border-block-start: 1px solid transparent;
+
+    @include mobile {
+        + .CmsPage {
+            margin-block-start: 0;
+
+            .CmsPage-Wrapper {
+                margin-block-start: 0;
+            }
+        }
+    }
+}

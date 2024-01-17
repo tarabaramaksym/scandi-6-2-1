@@ -1,0 +1,100 @@
+/**
+ * ScandiPWA - Progressive Web App for Magento
+ *
+ * Copyright © Scandiweb, Inc. All rights reserved.
+ * See LICENSE for license details.
+ *
+ * @license OSL-3.0 (Open Software License ("OSL") v. 3.0)
+ * @package scandipwa/scandipwa
+ * @link https://github.com/scandipwa/scandipwa
+ */
+
+.ProductDownloadableLinks {
+    &-Title {
+        margin-block-end: 1px;
+        font-weight: 700;
+
+        @include mobile {
+            display: none;
+        }
+    }
+
+    &-Required {
+        color: var(--primary-base-color);
+    }
+
+    &-ExpandableContent {
+        &Content {
+            padding: 0;
+        }
+
+        @include desktop {
+            &Heading {
+                display: none;
+            }
+        }
+
+        &Content_isContentExpanded {
+            @include mobile {
+                padding-block: 0 14px;
+            }
+        }
+
+        &Heading {
+            text-transform: uppercase;
+        }
+    }
+
+    .FieldGroup {
+        &_hasError {
+            .ProductDownloadableLink {
+                color: var(--primary-error-color);
+            }
+        }
+    }
+
+    @include desktop {
+        margin-block-end: 30px;
+    }
+}
+
+.ProductDownloadableLink {
+    display: flex;
+    justify-content: space-between;
+    padding-block-start: 15px;
+    padding-block-end: 10px;
+    padding-inline: 0;
+    border-block-end: 1px solid var(--expandable-content-divider-color);
+
+    .Field {
+        display: inline-block;
+        margin-inline-end: 10px;
+        margin-block-start: 0;
+        
+        .ProductDownloadableLink-SampleTitle {
+            display: block;
+        }
+    }
+
+    &-SampleLink {
+        margin-inline-start: 8px;
+
+        @include mobile {
+            margin-inline-end: 16px;
+        }
+
+        &::before {
+            content: ' '
+        }
+    }
+
+    @include mobile {
+        &:last-of-type {
+            border-block-end: none;
+        }
+
+        &:first-of-type {
+            padding-block-start: 10px;
+        }
+    }
+}

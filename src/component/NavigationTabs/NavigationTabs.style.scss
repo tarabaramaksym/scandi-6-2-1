@@ -1,0 +1,78 @@
+/**
+ * ScandiPWA - Progressive Web App for Magento
+ *
+ * Copyright © Scandiweb, Inc. All rights reserved.
+ * See LICENSE for license details.
+ *
+ * @license OSL-3.0 (Open Software License ("OSL") v. 3.0)
+ * @package scandipwa/scandipwa
+ * @link https://github.com/scandipwa/scandipwa
+ */
+
+:root {
+    --navigation-tabs-height: calc(50px + env(safe-area-inset-bottom));
+    --navigation-tabs-background: var(--secondary-light-color);
+    --navigation-tabs-color: var(--secondary-dark-color);
+}
+
+.NavigationTabs {
+    --header-background: var(--navigation-tabs-background);
+    --header-icon-stroke-width: 2px;
+
+    position: fixed;
+    inset-block-end: 0;
+    inset-inline-start: 0;
+    width: 100%;
+    z-index: 100;
+    background-color: var(--header-background);
+    padding-block-end: env(safe-area-inset-bottom);
+    transform: translateY(0);
+    transition: transform 200ms cubic-bezier(.47, 0, .745, .715);
+
+    .hideOnScroll & {
+        transform: translateY(100%);
+    }
+
+    @include mobile {
+        border-block-start: 1px solid var(--primary-divider-color);
+    }
+
+    @include desktop {
+        display: none;
+    }
+
+    &_isHidden {
+        display: none;
+
+        @at-root .hiddenNavigationTabs {
+            --navigation-tabs-height: env(safe-area-inset-bottom);
+        }
+    }
+
+    &-Nav {
+        height: var(--footer-nav-height);
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        padding: 0 12px;
+        z-index: 20;
+        max-width: var(--content-wrapper-width);
+        margin: auto;
+
+        @include mobile {
+            padding: 0 14px;
+        }
+    }
+
+    &-Button {
+        flex-grow: 1;
+        height: 100%;
+        display: inherit;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &-Icon {
+        font-weight: bold;
+    }
+}

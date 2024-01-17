@@ -1,0 +1,94 @@
+/**
+ * ScandiPWA - Progressive Web App for Magento
+ *
+ * Copyright © Scandiweb, Inc. All rights reserved.
+ * See LICENSE for license details.
+ *
+ * @license OSL-3.0 (Open Software License ("OSL") v. 3.0)
+ * @package scandipwa/scandipwa
+ * @link https://github.com/scandipwa/scandipwa
+ */
+
+// util class, is applied on <html> on fullscreen image
+
+:root {
+    --carousel-scroll-item-height: 38px;
+    --carousel-scroll-margin-top: 28px;
+}
+
+.overscrollPrevented {
+    overscroll-behavior: contain;
+}
+
+.ProductGallery {
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+    margin-inline: 45px;
+
+    @include ultra-narrow-desktop {
+        min-width: 332px;
+    }
+
+    @include narrow-desktop {
+        min-width: 482px;
+    }
+
+    @include mobile {
+        height: calc(100vh / 2);
+        margin-block-end: 16px;
+    }
+
+    &-Additional {
+        flex: 0 0 auto;
+        min-height: calc(var(--carousel-scroll-item-height) + var(--carousel-scroll-margin-top));
+
+        @include mobile {
+            display: none;
+        }
+
+        &_isImageZoomPopupActive {
+            position: absolute;
+            inset-block-end: 20px;
+            inset-inline-start: 20px;
+
+            .CarouselScrollItem {
+                filter: opacity(0.75);
+
+                &_isActive {
+                    border-width: 2px;
+                    filter: opacity(1);
+                }
+            }
+        }
+
+        &_isWithEmptySwitcher {
+            height: 66px;
+        }
+    }
+
+    &-SliderWrapper {
+        flex: 1;
+        height: 100%;
+    }
+
+    &-Slider {
+        height: 100%;
+        opacity: var(--sliderOpacity);
+
+        &_isImageZoomPopupActive {
+            cursor: pointer;
+        }
+
+        &_isZoomInCursor {
+            cursor: zoom-in;
+        }
+    }
+
+    .react-transform-component,
+    .react-transform-element,
+    &-SliderImage {
+        height: 100%;
+        width: 100%;
+    }
+}

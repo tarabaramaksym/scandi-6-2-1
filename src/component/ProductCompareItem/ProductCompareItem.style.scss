@@ -1,0 +1,85 @@
+/**
+ * ScandiPWA - Progressive Web App for Magento
+ *
+ * Copyright © Scandiweb, Inc. All rights reserved.
+ * See LICENSE for license details.
+ *
+ * @license OSL-3.0 (Open Software License ("OSL") v. 3.0)
+ * @package scandipwa/scandipwa
+ * @link https://github.com/scandipwa/scandipwa
+ */
+
+:root {
+    --product-compare-item-option-color: #adadad;
+    --product-compare-item-divider-color: var(--expandable-content-divider-color);
+}
+
+.ProductCompareItem {
+    display: flex;
+    flex-direction: column;
+    padding: var(--product-compare-item-gap);
+    padding-inline-end: 0;
+    position: relative;
+    height: 100%;
+    min-height: 100px;
+
+    &-Details {
+        display: flex;
+        flex-direction: row;
+        margin-block-end: 10px;
+    }
+
+    &-Figure {
+        flex: 0 0 auto;
+        width: 100px;
+        height: 100px;
+        margin-inline-end: 10px;
+    }
+
+    &-ImageLink {
+        height: 100%;
+
+        .Image {
+            height: 100%;
+        }
+    }
+
+    &-Actions {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &-Title {
+        flex: 1;
+        display: block;
+        width: 100%;
+        padding-inline-end: 19px;
+        margin: 0;
+        margin-block-end: 10px;
+        font-size: 14px;
+        line-height: 1.4;
+        color: var(--body-content-color);
+        font-weight: 400;
+    }
+
+    &-AddToCartBtnWrapper {
+        width: 100%;
+        display: block;
+        margin: 0;
+    }
+
+    &-AddToCartBtn {
+        width: 100%;
+    }
+
+    &-CloseBtn {
+        inset-inline-end: 0;
+        position: absolute;
+        margin-block-start: -4px;
+    }
+
+    .ProductWishlistButton {
+        margin-inline: 16px;
+    }
+}

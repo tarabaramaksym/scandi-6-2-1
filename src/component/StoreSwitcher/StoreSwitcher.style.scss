@@ -1,0 +1,81 @@
+/**
+ * ScandiPWA - Progressive Web App for Magento
+ *
+ * Copyright © Scandiweb, Inc. All rights reserved.
+ * See LICENSE for license details.
+ *
+ * @license OSL-3.0 (Open Software License ("OSL") v. 3.0)
+ * @package scandipwa/scandipwa
+ * @link https://github.com/scandipwa/scandipwa
+ */
+
+:root {
+    --store-switcher-list-background: var(--color-white);
+}
+
+.StoreSwitcher {
+    border-block-end: 1px solid var(--primary-divider-color);
+
+    @include desktop {
+        border-block-end: none;
+        margin-inline-start: 24px;
+    }
+
+    @include mobile {
+        margin: 0 16px;
+        padding-block-end: 1px;
+    }
+
+    .Field {
+        margin-block-start: 0;
+
+        &Select {
+            &-Select {
+                border: none;
+                font-size: 14px;
+                font-weight: 400;
+                opacity: 1;
+                padding-inline-start: 0;
+                line-height: 20px;
+            }
+
+            &::after {
+                height: 13px;
+                inset-inline-end: 0;
+                width: 13px;
+            }
+        }
+    }
+
+    .ChevronIcon {
+        width: 14px;
+        height: 14px;
+        margin-inline-start: 10px;
+        inset-inline-end: 0;
+    }
+
+    &-Title {
+        color: var(--input-color);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+
+        @include desktop {
+            font-size: 12px;
+        }
+    }
+
+    &-StoreList {
+        background-color: var(--store-switcher-list-background);
+        border: 1px solid var(--input-border-color);
+        display: none;
+        inset-inline-end: -20px;
+        position: absolute;
+        inset-block-start: 25px;
+        z-index: 2;
+
+        &_isOpen {
+            display: block;
+        }
+    }
+}
