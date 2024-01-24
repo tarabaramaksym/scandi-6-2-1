@@ -34,6 +34,7 @@ import {
 import { CategoryPageComponentProps, CategoryPageComponentState } from './CategoryPage.type';
 
 import './CategoryPage.style';
+import Pagination from 'Component/Pagination';
 
 export const CategoryFilterOverlay = lowPriorityLazy(() => import(
     /* webpackMode: "lazy", webpackChunkName: "overlays-category" */ 'Component/CategoryFilterOverlay'
@@ -415,8 +416,35 @@ S extends CategoryPageComponentState = CategoryPageComponentState,
         );
     }
 
+    getIsLoading() {
+        const {
+            filter,
+            isLoading,
+            isMatchingListFilter,
+        } = this.props;
+
+        /**
+         * In case the wrong category was passed down to the product list,
+         * show the loading animation, it will soon change to proper category.
+         */
+        if (filter.categoryIds === -1) {
+            return true;
+        }
+
+        if (!navigator.onLine) {
+            return false;
+        }
+
+        // if the filter expected matches the last requested filter
+        if (isMatchingListFilter) {
+            return false;
+        }
+
+        return isLoading;
+    }
+
     renderMiscellaneous(): ReactElement {
-        const { totalItems } = this.props;
+        const { totalItems, totalPages } = this.props;
 
         if (totalItems === 0 || !this.displayProducts()) {
             return <aside block="CategoryPage" elem="Miscellaneous" mods={ { noResults: true } } />;
@@ -434,6 +462,8 @@ S extends CategoryPageComponentState = CategoryPageComponentState,
                     elem="LayoutWrapper"
                     mods={ { isPrerendered: isSSR() || isCrawler() } }
                   >
+                    {/** TODO: change to isLoading from props*/}
+                     <Pagination isLoading={this.getIsLoading()} totalPages={totalPages}/>
                       { this.renderLayoutButtons() }
                       { this.renderCategorySort() }
                   </div>
